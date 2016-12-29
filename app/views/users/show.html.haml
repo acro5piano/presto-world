@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Age:
+  = @user.age
+%p
+  %b Educational background:
+  = @user.educational_background
+%p
+  %b Vision:
+  = @user.vision
+%p
+  %b Strength:
+  = @user.strength
+%p
+  %b Shift:
+  = @user.shift_id
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path
