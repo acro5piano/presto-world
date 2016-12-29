@@ -1,0 +1,88 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background: #EEE;
+  padding-top: 20px;
+  margin-bottom: 0px !important;
+}
+
+.wrapper {
+  background: #FFF;
+}
+
+.page-header {
+  margin-top: 20px;
+}
+
+.navbar-footer {
+  margin-top: 50px;
+  padding-top: 20px;
+  color: #AAA;
+  a {
+    color: #FFF;
+  }
+}
+
+.navbar-right {
+  text-align:right;
+  .form-control {
+    width: 40%;
+  }
+}
+
+textarea {
+  height: 100px !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.edit-index {
+    margin: 0
+}
+
+button.list-group-item {
+  width: 100%;
+  text-align: left;
+}
+
+.edit-area {
+  display:none;
+}
+
+.scroll {
+  max-height: 75vh;
+  overflow-y:scroll;
+}
+
+.v-split {
+  .scroll {
+    max-height: 35vh;
+  }
+}
+
+.dropdown button {
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  text-align: left;
+  padding: 3px 20px;
+}
+
+button.glyphicon {
+  background-color: transparent;
+  border: transparent;
+}

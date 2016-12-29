@@ -1,22 +1,24 @@
+%h1 あなたのプロフィール
+
 %p#notice= notice
 
 %p
-  %b Name:
+  %b 名前:
   = @user.name
 %p
-  %b Age:
+  %b 年齢:
   = @user.age
 %p
-  %b Educational background:
+  %b 学歴:
   = @user.educational_background
 %p
-  %b Vision:
+  %b なりたい教師像:
   = @user.vision
 %p
-  %b Strength:
+  %b 得意領域:
   = @user.strength
 %p
-  %b Shift:
+  %b 勤務可能時間帯:
   = @user.shift_id
 
 = link_to 'Edit', edit_user_path(@user)
