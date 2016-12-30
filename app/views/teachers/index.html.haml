@@ -14,18 +14,18 @@
       %th
 
   %tbody
-    - @users.each do |user|
+    - @teachers.each do |teacher|
       %tr
-        %td= user.name
-        %td= user.age
-        %td= user.educational_background
-        %td= user.vision
-        %td= user.strength
-        %td= user.shift_id
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= teacher.name
+        %td= teacher.age
+        %td= teacher.educational_background
+        %td= teacher.vision
+        %td= teacher.strength
+        %td= teacher.shift_id
+        %td= link_to 'Show', teacher
+        %td= link_to 'Edit', edit_teacher_path(teacher)
+        %td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New User', new_user_path
+= link_to 'New Teacher', new_teacher_path

@@ -1,61 +1,61 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+class TeachersController < ApplicationController
+  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
+  # GET /teachers
   def index
-    @users = User.all
+    @teachers = Teacher.all
   end
 
-  # GET /users/1
+  # GET /teachers/1
   def show
   end
 
-  # GET /users/new
+  # GET /teachers/new
   def new
-    @user = User.new
+    @teacher = Teacher.new
   end
 
-  # GET /users/1/edit
+  # GET /teachers/1/edit
   def edit
   end
 
-  # POST /users
+  # POST /teachers
   def create
-    @user = User.new(user_params)
+    @teacher = Teacher.new(teacher_params)
 
-    if @user.save
-      flash[:success] = 'User was successfully created.'
-      redirect_to @user
+    if @teacher.save
+      flash[:success] = 'Teacher was successfully created.'
+      redirect_to @teacher
     else
       render :new
     end
   end
 
-  # PATCH/PUT /users/1
+  # PATCH/PUT /teachers/1
   def update
-    if @user.update(user_params)
-      flash[:success] = 'User was successfully updated.'
-      redirect_to @user
+    if @teacher.update(teacher_params)
+      flash[:success] = 'Teacher was successfully updated.'
+      redirect_to @teacher
     else
       render :edit
     end
   end
 
-  # DELETE /users/1
+  # DELETE /teachers/1
   def destroy
-    @user.destroy
-    flash[:success] = 'User was successfully destroyed.'
-    redirect_to users_url
+    @teacher.destroy
+    flash[:success] = 'Teacher was successfully destroyed.'
+    redirect_to teachers_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+    def set_teacher
+      @teacher = Teacher.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:name, :age, :educational_background, :vision, :strength, :shift_id)
+    def teacher_params
+      params.require(:teacher).permit(:name, :age, :educational_background, :vision, :strength, :shift_id)
     end
 end

@@ -1,11 +1,11 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for @user do |f|
-  - if @user.errors.any?
+= form_for @teacher do |f|
+  - if @teacher.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %h2= "#{pluralize(@teacher.errors.count, "error")} prohibited this teacher from being saved:"
       %ul
-        - @user.errors.full_messages.each do |msg|
+        - @teacher.errors.full_messages.each do |msg|
           %li= msg
 
   .field.form-group
@@ -27,5 +27,5 @@
     = f.label :shift_id
     = f.number_field :shift_id, class: 'form-control'
   .actions
-    = link_to 'Back', user_path(@user), class: 'btn btn-default'
+    = link_to 'Back', teacher_path(@teacher), class: 'btn btn-default'
     = f.submit 'Save', class: 'btn btn-primary'

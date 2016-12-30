@@ -2,21 +2,21 @@
 
 %p
   %b 名前:
-  = @user.name
+  = @teacher.name
 %p
   %b 年齢:
-  = @user.age
+  = @teacher.age
 %p
   %b 学歴:
-  = @user.educational_background
+  = @teacher.educational_background
 %p
   %b なりたい教師像:
-  = @user.vision
+  = @teacher.vision
 %p
   %b 得意領域:
-  = @user.strength
+  = @teacher.strength
 %p
   %b 勤務可能時間帯:
-  = @user.shift_id
+  = @teacher.shift_id
 
-= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default'
+= link_to 'Edit', edit_teacher_path(@teacher), class: 'btn btn-default'
