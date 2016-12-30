@@ -21,9 +21,5 @@ test:
   database: db/test.sqlite3
 
 production:
+  <<: *default
   adapter: postgresql
-  host: ENV['DB_HOST']
-  database: ENV['DB_DATABASE']
-  username: ENV['DB_USERNAME']
-  password: ENV['DB_PASSWORD']
-  port: ENV['DB_PORT']
