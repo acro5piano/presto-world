@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # Landing page
   root 'static_pages#index'
+  get '/about', to: 'static_pages#about', as: 'about'
+
   get '/register', to: 'teachers#new', as: 'register'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
