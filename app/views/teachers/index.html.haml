@@ -1,17 +1,14 @@
-%h1 プロフィール編集
+- provide(:title,  '教師検索結果')
 
-%table
+%table.table.table-bordered
   %thead
     %tr
-      %th Name
-      %th Age
-      %th Educational background
-      %th Vision
-      %th Strength
-      %th Shift
-      %th
-      %th
-      %th
+      %th 教師名
+      %th 年齢
+      %th 学歴
+      %th なりたい教師像
+      %th 得意領域
+      %th シフト
 
   %tbody
     - @teachers.each do |teacher|
@@ -22,10 +19,3 @@
         %td= teacher.vision
         %td= teacher.strength
         %td= teacher.shift_id
-        %td= link_to 'Show', teacher
-        %td= link_to 'Edit', edit_teacher_path(teacher)
-        %td= link_to 'Destroy', teacher, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Teacher', new_teacher_path

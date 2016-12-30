@@ -15,9 +15,7 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          %a 教師を探す
-        -# %li
-        -#   %a
+          = link_to '教師を探す', teachers_path
 
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
@@ -27,4 +25,6 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#"} ログアウト
+              = link_to 'プロフィール編集', edit_teacher_path(1)
+              = link_to 'ログアウト', logout_path
+              = link_to 'ログアウト', destroy_teacher_session_path
