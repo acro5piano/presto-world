@@ -1,18 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html, body, h1, h2, h3 {
+  color: #636b6f;
+  font-weight: 100;
+}
+
 body {
-  background: #EEE;
   padding-top: 20px;
+  margin-top: 20px;
   margin-bottom: 0px !important;
 }
 
-.wrapper {
-  background: #FFF;
-}
-
-.page-header {
-  margin-top: 20px;
+.flash {
+  margin: 20px 0 0 0;
 }
 
 .navbar-footer {
@@ -50,30 +51,6 @@ textarea {
   }
 }
 
-.edit-index {
-    margin: 0
-}
-
-button.list-group-item {
-  width: 100%;
-  text-align: left;
-}
-
-.edit-area {
-  display:none;
-}
-
-.scroll {
-  max-height: 75vh;
-  overflow-y:scroll;
-}
-
-.v-split {
-  .scroll {
-    max-height: 35vh;
-  }
-}
-
 .dropdown button {
   background-color: transparent;
   border: transparent;
@@ -85,4 +62,16 @@ button.list-group-item {
 button.glyphicon {
   background-color: transparent;
   border: transparent;
+}
+
+.jumbotron {
+  background-image: url(/jumbotron.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #eee;
+  height: 400px;
+  text-align: center;
+  h1 {
+    font-size: 40px;
+  }
 }

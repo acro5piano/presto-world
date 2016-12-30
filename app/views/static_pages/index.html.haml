@@ -1,7 +1,19 @@
-- provide(:title, '理想の家庭教師を探そう')
+.jumbotron
+  .container
+    %h1 理想の家庭教師を探そう
 
-%h2 家庭教師を探す
+.container
 
-%h3 エリアから探す
+  %h3 エリアから探す
 
-%h3 大学から探す
+  = form_tag(teachers_path) do
+    .col-lg-3.input-group
+      = text_field_tag(:teacher_area, '', class: 'form-control')
+      %span.input-group-btn= submit_tag('探す', class: 'btn btn-success')
+
+  %h3 大学から探す
+
+  = form_tag(teachers_path) do
+    .col-lg-3.input-group
+      = text_field_tag(:teacher_area, '', class: 'form-control')
+      %span.input-group-btn= submit_tag('探す', class: 'btn btn-success')

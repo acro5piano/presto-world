@@ -1,4 +1,4 @@
-- provide(:title, 'あなたのプロフィール')
+- provide(:title, @teacher.name)
 
 %p
   %b 名前:
@@ -19,4 +19,5 @@
   %b 勤務可能時間帯:
   = @teacher.shift_id
 
-= link_to 'Edit', edit_teacher_path(@teacher), class: 'btn btn-default'
+= link_to 'お気に入り追加', '#', class: 'btn btn-default'
+= link_to 'メッセージを送信', '#', class: 'btn btn-success'

@@ -13,7 +13,7 @@
   %tbody
     - @teachers.each do |teacher|
       %tr
-        %td= teacher.name
+        %td= link_to teacher.name, teacher_path(teacher)
         %td= teacher.age
         %td= teacher.educational_background
         %td= teacher.vision

@@ -9,25 +9,36 @@
     = render 'layouts/header'
 
     - flash.each do |message_type, message|
-      = content_tag(:div, message, class: "text-center alert alert-#{message_type}")
-    .container.wrapper
-      .page-header
-        %h3= yield(:title)
+      = content_tag(:div, message,
+                    class: "flash text-center alert alert-#{message_type}")
 
+    -# for Landing page
+    - if request.path == '/'
       = yield
+
+    - else
+      .container.wrapper
+        - if yield(:title) != ''
+          .page-header
+            %h2= yield(:title)
+        = yield
 
     = render 'layouts/footer'
 
+
   / modal
-  #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  #myModal.modal.fade{"aria-labelledby" => "myModalLabel",
+                      :role => "dialog", :tabindex => "-1"}
     .modal-dialog{:role => "document"}
       .modal-content
         .modal-header
-          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %button.close{"aria-label" => "Close",
+                        "data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} ×
           %h4#myModalLabel.modal-title
         .modal-body
           \...
         .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          %button.btn.btn-default{"data-dismiss" => "modal",
+                                  :type => "button"} Close
           %button.btn.btn-primary{:type => "button"} Save changes
