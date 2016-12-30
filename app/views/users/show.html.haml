@@ -1,7 +1,5 @@
 - provide(:title, 'あなたのプロフィール')
 
-%p#notice= notice
-
 %p
   %b 名前:
   = @user.name
@@ -21,4 +19,4 @@
   %b 勤務可能時間帯:
   = @user.shift_id
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default'
