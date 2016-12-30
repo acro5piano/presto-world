@@ -1,4 +1,4 @@
-%h1 Editing user
+- provide(:title, 'プロフィールの編集')
 
 = form_for @user do |f|
   - if @user.errors.any?
@@ -8,24 +8,24 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.form-group
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
   .field
     = f.label :age
-    = f.number_field :age
+    = f.number_field :age, class: 'form-control'
   .field
     = f.label :educational_background
-    = f.text_field :educational_background
+    = f.text_field :educational_background, class: 'form-control'
   .field
     = f.label :vision
-    = f.text_field :vision
+    = f.text_field :vision, class: 'form-control'
   .field
     = f.label :strength
-    = f.text_field :strength
+    = f.text_field :strength, class: 'form-control'
   .field
     = f.label :shift_id
-    = f.number_field :shift_id
+    = f.number_field :shift_id, class: 'form-control'
   .actions
     = link_to 'Back', user_path(@user), class: 'btn btn-default'
     = f.submit 'Save', class: 'btn btn-primary'
