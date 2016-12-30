@@ -17,7 +17,7 @@ gulp.task('watch', function() {
     proxy: 'http://localhost:9292',
     open: false,
   })
-  gulp.watch("./*").on('change', browserSync.reload)
+  gulp.watch("./app/**/*").on('change', browserSync.reload)
 })
 
 gulp.task('default', ['watch', 'serve'])
