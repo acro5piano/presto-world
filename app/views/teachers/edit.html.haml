@@ -3,7 +3,6 @@
 = form_for @teacher do |f|
   - if @teacher.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@teacher.errors.count, "error")} prohibited this teacher from being saved:"
       %ul
         - @teacher.errors.full_messages.each do |msg|
           %li= msg
@@ -19,7 +18,7 @@
     = f.text_field :educational_background, class: 'form-control'
   .field
     = f.label :vision
-    = f.text_field :vision, class: 'form-control'
+    = f.text_area :vision, class: 'form-control'
   .field
     = f.label :strength
     = f.text_field :strength, class: 'form-control'

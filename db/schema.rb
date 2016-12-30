@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20161229225831) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "educational_background"
-    t.string   "vision"
+    t.string   "name",                   null: false
+    t.integer  "age",                    null: false
+    t.string   "educational_background", null: false
+    t.text     "vision"
     t.string   "strength"
     t.integer  "shift_id"
     t.datetime "created_at",             null: false
