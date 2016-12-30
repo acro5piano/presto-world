@@ -16,6 +16,12 @@ gulp.task('watch', function() {
   browserSync.init({
     proxy: 'http://localhost:9292',
     open: false,
+    notify: {
+      styles: {
+        top: 'auto',
+        bottom: '0'
+      }
+    }
   })
   gulp.watch("./app/**/*").on('change', browserSync.reload)
 })

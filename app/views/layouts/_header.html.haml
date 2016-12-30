@@ -18,6 +18,14 @@
           = link_to '教師を探す', teachers_path
 
       %ul.nav.navbar-nav.navbar-right
+        %li
+          %a(href='#{new_teacher_path}')
+            %i.glyphicon.glyphicon-user
+            Facebookで登録
+        %li
+          %a(href='#{login_path}')
+            %i.glyphicon.glyphicon-lock
+            ログイン
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true",
                              "data-toggle" => "dropdown", :href => "#", :role => "button"}

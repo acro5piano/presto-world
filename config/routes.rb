@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   # Landing page
   root 'static_pages#index'
-  get '/register', to: 'static_pages#index', as: 'register'
-  get '/login', to: 'static_pages#index', as: 'login'
-  get '/logout', to: 'static_pages#index', as: 'logout'
+  get '/register', to: 'teachers#new', as: 'register'
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 end
