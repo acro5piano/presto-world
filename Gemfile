@@ -38,9 +38,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
 
-  # Print ER graph
-  gem 'railroady'
-
   # Test data
   gem 'faker'
   gem 'gimei'
@@ -66,3 +63,6 @@ group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
+
+# Others
+gem 'dotenv-rails'

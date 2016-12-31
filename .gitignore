@@ -24,3 +24,5 @@
 /node_modules
 /public/assets/*
 !/public/assets/.keep
+
+.env
