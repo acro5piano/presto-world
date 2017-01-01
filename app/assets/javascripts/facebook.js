@@ -1,4 +1,4 @@
-# TODO: 開発環境とそれ以外で分ける
+// TODO: 開発環境とそれ以外で分ける
 var appId = '1252598184786360';
 
 window.fbAsyncInit = function() {
