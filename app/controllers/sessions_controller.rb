@@ -8,5 +8,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    flash[:success] = 'ログアウトしました'
+    session[:teacher_id] = nil
+    redirect_to root_path
   end
 end

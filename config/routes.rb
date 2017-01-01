@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', as: 'about'
 
   get '/register', to: 'teachers#new', as: 'register'
+  get '/register_with_facebook', to: 'teachers#register_with_facebook'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'

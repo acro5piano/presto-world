@@ -10,6 +10,29 @@ class TeachersController < ApplicationController
   def show
   end
 
+  def register_with_facebook
+    if !params[:token]
+      flash[:danger] = '登録できませんでした'
+      redirect_to '/' and return
+    end
+
+    # TODO: ここをFacebookのAPIで取得する
+    facebook_user_info = {
+      name: 'kazuya',
+      age: 23,
+      educational_background: '1284',
+    }
+    teacher = Teacher.new(facebook_user_info)
+    if teacher.save
+      flash[:success] = '登録が完了しました'
+      session[:teacher_id] = teacher.id
+      redirect_to '/'
+    else
+      flash[:danger] = '登録できませんでした'
+      redirect_to '/'
+    end
+  end
+
   # GET /teachers/new
   def new
     @teacher = Teacher.new

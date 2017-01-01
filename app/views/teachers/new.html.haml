@@ -1,11 +1,7 @@
 - provide(:title, '新規登録フォーム')
 .fb-root
-.fb-like(data-share="true" data-width="450" data-show-faces="true")
 
--# 80桁制限はここでは無視
-.fb-share-button(data-href="https://presto-world.herokuapp.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true")
-  %a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpresto-world.herokuapp.com%2F&amp;src=sdkpreparse") Share
-
-
-%a(href='#')
-  %img.login-facebook(src="/login-facebook.svg")
+.fb-login-button(data-max-rows="2"
+                 data-size="large"
+                 data-show-faces="true"
+                 data-auto-logout-link="false")
