@@ -4,6 +4,7 @@ class Teacher < ApplicationRecord
   #validates_inclusion_of :, :in => 10..80
 
   def age
+    return nil if !birth_day
     now = Time.now.utc.to_date
     leap = if now.month > birth_day.month ||
               (now.month == birth_day.month && now.day >= birth_day.day)
