@@ -1,6 +1,16 @@
 class Teacher < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
-  validates :age, presence: true
-  validates :educational_background, presence: true
-  validates_inclusion_of :age, :in => 10..80
+  validates :email, presence: true
+  #validates_inclusion_of :, :in => 10..80
+
+  def age
+    now = Time.now.utc.to_date
+    leap = if now.month > birth_day.month ||
+              (now.month == birth_day.month && now.day >= birth_day.day)
+             0
+           else
+             1
+           end
+    now.year - birth_day.year - leap
+  end
 end

@@ -37,14 +37,19 @@ ActiveRecord::Schema.define(version: 20161229225831) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "name",                   null: false
-    t.integer  "age",                    null: false
-    t.string   "educational_background", null: false
+    t.string   "name",                                   null: false
+    t.boolean  "gender",                 default: false, null: false
+    t.string   "email",                                  null: false
+    t.date     "birth_day"
+    t.string   "educational_background"
     t.text     "vision"
     t.string   "strength"
     t.integer  "shift_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
 end

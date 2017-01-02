@@ -10,7 +10,9 @@ Teacher.create(
   [
     {
       name: '五所 和哉',
-      age: 23,
+      gender: true,
+      email: 'ketsume0211@gmail.com',
+      birth_day: '1993-02-11',
       educational_background: '一橋大学経済学部',
       vision: '生徒目線',
       strength: '世界史',

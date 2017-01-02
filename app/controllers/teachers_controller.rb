@@ -16,14 +16,33 @@ class TeachersController < ApplicationController
       redirect_to '/' and return
     end
 
-    # TODO: ここをFacebookのAPIで取得する
+    # TODO: モデルかヘルパー側に処理を移すべき
+    uri = URI('https://graph.facebook.com/v2.8/1075567329238766')
+    uri.query = URI.encode_www_form({ access_token: params[:token],
+                                      fields: 'id,name,gender,email,birthday' })
+    res = Net::HTTP.get_response(uri)
+    fb_data = JSON.parse(res.body, symbolize_names: true)
+
+    # Tokenを使ってUIDが一致するかを見る
+    # 一致していたらログイン処理
+    # TODO: モデルかヘルパー側に処理を移すべき。またログイン処理はsessions_helperに一元化したい
+    if (teacher = Teacher.find_by(uid: fb_data[:id]))
+      flash[:success] = 'ログインしました'
+      session[:teacher_id] = teacher.id
+      redirect_to '/' and return
+    end
+
+    # TODO: ここもModelに移したい
     facebook_user_info = {
-      name: 'kazuya',
-      age: 23,
-      educational_background: '1284',
+      name: fb_data[:name],
+      gender: (fb_data[:gender] == 'female'),
+      email: fb_data[:email],
+      uid: fb_data[:id],
+      provider: 'facebook',
+      token: params[:token],
     }
     teacher = Teacher.new(facebook_user_info)
-    if teacher.save
+    if teacher.save!
       flash[:success] = '登録が完了しました'
       session[:teacher_id] = teacher.id
       redirect_to '/'
@@ -79,6 +98,6 @@ class TeachersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def teacher_params
-      params.require(:teacher).permit(:name, :age, :educational_background, :vision, :strength, :shift_id)
+      params.require(:teacher).permit(:name, :birth_day, :educational_background, :vision, :strength, :shift_id)
     end
 end

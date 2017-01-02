@@ -17,13 +17,10 @@
       %ul.nav.navbar-nav.navbar-right
         - if !logged_in?
           %li
-            %a(href='#{new_teacher_path}')
+            %a.fb-register(href='#')
               %i.glyphicon.glyphicon-user
-              Facebookで登録
-          %li
-            %a(href='#{login_path}')
-              %i.glyphicon.glyphicon-lock
-              ログイン
+              Facebookで登録 / ログイン
+
         - if logged_in?
           %li
             = link_to 'プロフィール編集', edit_teacher_path(1)
@@ -34,13 +31,9 @@
       %ul.nav.navbar-nav.navbar-right
         - if !logged_in?
           %li
-            %a(href='#{new_teacher_path}')
+            %a.fb-register(href='#')
               %i.glyphicon.glyphicon-user
-              Facebookで登録
-          %li
-            %a(href='#{login_path}')
-              %i.glyphicon.glyphicon-lock
-              ログイン
+              Facebookで登録 / ログイン
         - if logged_in?
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true",
