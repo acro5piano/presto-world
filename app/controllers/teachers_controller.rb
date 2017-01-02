@@ -17,6 +17,7 @@ class TeachersController < ApplicationController
     end
 
     # TODO: モデルかヘルパー側に処理を移すべき
+    # TODO: IDはJSONで入力をもらって、動的に出力する
     uri = URI('https://graph.facebook.com/v2.8/1075567329238766')
     uri.query = URI.encode_www_form({ access_token: params[:token],
                                       fields: 'id,name,gender,email,birthday' })
