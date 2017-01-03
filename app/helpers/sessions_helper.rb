@@ -1,10 +1,6 @@
 module SessionsHelper
-  def logged_in?
-    session[:teacher_id] != nil
-  end
-
-  def current_teacher
-    return nil if !session[:teacher_id]
-    Teacher.find(session[:teacher_id])
+  def current_user
+    return nil if !session[:user_id]
+    User.find(session[:user_id])
   end
 end

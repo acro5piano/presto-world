@@ -1,0 +1,21 @@
+- provide(:title,  '教師検索結果')
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th 教師名
+      %th 年齢
+      %th 学歴
+      %th なりたい教師像
+      %th 得意領域
+      %th シフト
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, user_path(user)
+        %td= user.age
+        %td= user.educational_background
+        %td= user.vision
+        %td= user.strength
+        %td= user.shift_id

@@ -11,14 +11,14 @@
 
   %h3 エリアから探す
 
-  = form_tag(teachers_path) do
+  = form_tag(users_path) do
     .input-group
-      = text_field_tag(:teacher_area, '', class: 'form-control')
+      = text_field_tag(:user_area, '', class: 'form-control')
       %span.input-group-btn= submit_tag('探す', class: 'btn btn-success')
 
   %h3 大学から探す
 
-  = form_tag(teachers_path) do
+  = form_tag(users_path) do
     .input-group
-      = text_field_tag(:teacher_area, '', class: 'form-control')
+      = text_field_tag(:user_area, '', class: 'form-control')
       %span.input-group-btn= submit_tag('探す', class: 'btn btn-success')

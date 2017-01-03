@@ -28,7 +28,9 @@ $(document).on('ready', function() {
           if (response.status === 'connected') {
             console.log('connected')
             window.location.href = '/register_with_facebook?token='+
-                                    response.authResponse.accessToken
+                                    response.authResponse.accessToken +
+                                    '&uid=' +
+                                    response.authResponse.userID
           } else if (response.status === 'not_authorized') {
             console.log('not auth')
           } else {

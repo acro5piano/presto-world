@@ -1,23 +1,23 @@
-- provide(:title, @teacher.name)
+- provide(:title, @user.name)
 
 %p
   %b 名前:
-  = @teacher.name
+  = @user.name
 %p
   %b 年齢:
-  = @teacher.age
+  = @user.age
 %p
   %b 学歴:
-  = @teacher.educational_background
+  = @user.educational_background
 %p
   %b なりたい教師像:
-  = @teacher.vision
+  = @user.vision
 %p
   %b 得意領域:
-  = @teacher.strength
+  = @user.strength
 %p
   %b 勤務可能時間帯:
-  = @teacher.shift_id
+  = @user.shift_id
 
 = link_to 'お気に入り追加', '#', class: 'btn btn-default'
 = link_to 'メッセージを送信', '#', class: 'btn btn-success'

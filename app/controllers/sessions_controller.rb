@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def destroy
     flash[:success] = 'ログアウトしました'
-    session[:teacher_id] = nil
+    session[:user_id] = nil
     redirect_to root_path
   end
 end

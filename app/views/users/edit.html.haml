@@ -1,10 +1,10 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for @teacher do |f|
-  - if @teacher.errors.any?
+= form_for @user do |f|
+  - if @user.errors.any?
     #error_explanation
       %ul
-        - @teacher.errors.full_messages.each do |msg|
+        - @user.errors.full_messages.each do |msg|
           %li= msg
 
   .field.form-group
