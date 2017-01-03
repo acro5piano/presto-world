@@ -1,7 +1,28 @@
-- provide(:title, '新規登録フォーム')
-.fb-root
+/
+  メールアドレス認証が必要になってきた頃に導入する
+  現在はFacebook認証のみを使っているので、必要ない
 
-.fb-login-button(data-max-rows="2"
-                 data-size="large"
-                 data-show-faces="true"
-                 data-auto-logout-link="false")
+- provide(:title, '新規登録フォーム')
+
+- if @user.errors.any?
+  #error_explanation
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg
+
+%h3 Facebookで登録
+= link_to 'Facebook', '#', class: 'btn btn-primary fb-register'
+
+%h3 メールアドレスで登録
+
+= form_for(@user) do |f|
+  .field.form-group
+    = f.label :email
+    = f.text_field :email, class: 'form-control'
+
+  .field.form-group
+    = f.label :password
+    = f.password_field :password, class: 'form-control'
+
+  .actions
+    = f.submit 'メールを送信', class: 'btn btn-success'

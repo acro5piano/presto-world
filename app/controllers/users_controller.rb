@@ -16,8 +16,6 @@ class UsersController < ApplicationController
       redirect_to '/' and return
     end
 
-    # TODO: モデルかヘルパー側に処理を移すべき
-    # TODO: IDはJSONで入力をもらって、動的に出力する
     fb_data = facebook_user_info(params[:uid], params[:token])
 
     # Tokenを使ってUIDが一致するかを見る
@@ -42,7 +40,7 @@ class UsersController < ApplicationController
     if user.save!
       flash[:success] = '登録が完了しました'
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to edit_user_path(user)
     else
       flash[:danger] = '登録できませんでした'
       redirect_to '/'
@@ -62,7 +60,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if @user.save!
       flash[:success] = 'User was successfully created.'
       redirect_to @user
     else
@@ -95,6 +93,8 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :birth_day, :educational_background, :vision, :strength, :shift_id)
+      params.require(:user).permit(:name, :gender, :email, :birth_day,
+                                   :is_teacher, :educational_background,
+                                   :vision, :strength, :shift_id)
     end
 end

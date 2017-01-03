@@ -19,5 +19,8 @@
   %b 勤務可能時間帯:
   = @user.shift_id
 
-= link_to 'お気に入り追加', '#', class: 'btn btn-default'
-= link_to 'メッセージを送信', '#', class: 'btn btn-success'
+- if current_user.id == @user.id
+  = link_to 'プロフィールを編集する', edit_user_path(current_user), class: 'btn btn-primary'
+- else
+  = link_to 'お気に入り追加', '#', class: 'btn btn-default'
+  = link_to 'メッセージを送信', '#', class: 'btn btn-success'

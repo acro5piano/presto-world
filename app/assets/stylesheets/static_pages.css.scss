@@ -1,0 +1,14 @@
+.jumbotron {
+  background-image: url(/jumbotron.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #eee;
+  height: 400px;
+  text-align: center;
+  h1 {
+    font-size: 40px;
+  }
+  .btn {
+    margin: 10px;
+  }
+}

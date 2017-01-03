@@ -7,12 +7,24 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
+  %h3 サービスタイプ
+  .field.form-group
+    = f.radio_button :is_teacher, 1, checked: @user.is_teacher
+    = f.label :is_teacher, '教師', for: 'user_is_teacher_1'
+
+  .field.form-group
+    = f.radio_button :is_teacher, 0, checked: !@user.is_teacher
+    = f.label :is_teacher, '家庭', for: 'user_is_teacher_0'
+
+  %h3 基本情報
   .field.form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
   .field
     = f.label :age
     = f.number_field :age, class: 'form-control'
+
+  %h3 教師情報
   .field
     = f.label :educational_background
     = f.text_field :educational_background, class: 'form-control'

@@ -10,14 +10,26 @@ User.create(
   [
     {
       name: '五所 和哉',
-      gender: true,
+      gender: false,
       email: 'ketsume0211@gmail.com',
       birth_day: '1993-02-11',
+
+      is_teacher: false,
+
       educational_background: '一橋大学経済学部',
       vision: '生徒目線',
       strength: '世界史',
       shift_id: 1,
     },
+    {
+      name: 'Hiroki Nozawa',
+      gender: false,
+      email: 'example@gmail.com',
+      birth_day: '1992-06-06',
 
+      is_teacher: true,
+
+      shift_id: 1,
+    },
   ]
 )
