@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.date :birth_day
 
       # Teacher or student
-      t.boolean :is_teacher, default: 0, null: false
+      t.boolean :is_teacher, default: false, null: false
 
       # teacher specific
       t.string :educational_background
