@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20161229225831) do
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "teacher_id"
+    t.integer  "user_id"
     t.integer  "student_id"
     t.string   "message"
     t.datetime "created_at", null: false
@@ -36,11 +36,12 @@ ActiveRecord::Schema.define(version: 20161229225831) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "teachers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false
     t.boolean  "gender",                 default: false, null: false
     t.string   "email",                                  null: false
     t.date     "birth_day"
+    t.boolean  "is_teacher",             default: false, null: false
     t.string   "educational_background"
     t.text     "vision"
     t.string   "strength"
