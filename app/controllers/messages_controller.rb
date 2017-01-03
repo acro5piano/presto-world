@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
   # GET /messages
   def index
     @messages = Message.all
@@ -8,6 +6,15 @@ class MessagesController < ApplicationController
 
   # GET /messages/1
   def show
+    if current_user.is_teacher?
+      @teacher_id = current_user.id
+      @student_id = params[:id]
+    else
+      @teacher_id = params[:id]
+      @student_id = current_user.id
+    end
+
+    @messages = Message.where(teacher_id: @teacher_id, student_id: @student_id)
   end
 
   # GET /messages/new
@@ -24,7 +31,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to @message, notice: 'Message was successfully created.'
+      redirect_to message_path(@message.teacher_id), notice: 'Message was successfully created.'
     else
       render :new
     end
@@ -53,6 +60,6 @@ class MessagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:user_id, :student_id, :message)
+      params.require(:message).permit(:teacher_id, :student_id, :message)
     end
 end

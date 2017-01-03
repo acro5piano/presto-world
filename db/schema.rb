@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 20161229225831) do
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "teacher_id"
     t.integer  "student_id"
-    t.string   "message"
+    t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20161229225831) do
     t.integer  "star"
     t.string   "title"
     t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "students", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
