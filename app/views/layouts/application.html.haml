@@ -43,3 +43,7 @@
           %button.btn.btn-default{"data-dismiss" => "modal",
                                   :type => "button"} Close
           %button.btn.btn-primary{:type => "button"} Save changes
+
+  :javascript
+    $.variables = []
+    $.variables.facebook_app_id = "#{ENV['FACEBOOK_APP_ID']}"
