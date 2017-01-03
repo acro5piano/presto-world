@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 20161229225831) do
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "teacher_id"
-    t.integer  "student_id"
+    t.integer  "sent_user_id"
+    t.integer  "received_user_id"
     t.text     "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "reviews", force: :cascade do |t|

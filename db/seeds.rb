@@ -6,12 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# TODO: Fakerを使おう
 User.create(
   [
     {
       name: '五所 和哉',
       gender: false,
-      email: 'ketsume0211@gmail.com',
+      email: 'example_1@gmail.com',
       birth_day: '1993-02-11',
 
       is_teacher: false,
@@ -24,7 +25,7 @@ User.create(
     {
       name: 'Hiroki Nozawa',
       gender: false,
-      email: 'example@gmail.com',
+      email: 'example_2@gmail.com',
       birth_day: '1992-06-06',
 
       is_teacher: true,

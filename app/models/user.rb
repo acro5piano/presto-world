@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sent_user_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'received_user_id'
+
   validates :name, presence: true, length: { maximum: 50 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -6,6 +9,17 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   #validates_inclusion_of :, :in => 10..80
+
+  def messages
+    Message.where(sent_user_id: self.id)
+      .or(Message.where(received_user_id: self.id))
+  end
+
+  def received_or_sent_message_users
+    user_ids = messages.pluck(:sent_user_id, :received_user_id).flatten.uniq
+    user_ids.delete(self.id)
+    User.find(user_ids)
+  end
 
   def age
     return nil if !birth_day

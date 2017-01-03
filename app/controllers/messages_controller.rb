@@ -1,29 +1,11 @@
 class MessagesController < ApplicationController
-  # GET /messages
-  def index
-    @messages = Message.all
-  end
-
-  # GET /messages/1
-  def show
-    if current_user.is_teacher?
-      @teacher_id = current_user.id
-      @student_id = params[:id]
-    else
-      @teacher_id = params[:id]
-      @student_id = current_user.id
-    end
-
-    @messages = Message.where(teacher_id: @teacher_id, student_id: @student_id)
-  end
-
-  # GET /messages/new
+  # GET /messages/new?with=2
   def new
-    @message = Message.new
-  end
-
-  # GET /messages/1/edit
-  def edit
+    # Left panel
+    @all_senders = current_user.received_or_sent_message_users
+    @messages = Message.where(sent_user_id: current_user.id,
+                              received_user_id: params[:with])
+    @sender = User.find(params[:with])
   end
 
   # POST /messages
@@ -31,35 +13,17 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to message_path(@message.teacher_id), notice: 'Message was successfully created.'
+      flash[:success] = '送信されました'
+      redirect_to :back
     else
-      render :new
+      flash[:warning] = 'メッセージを入力して下さい'
+      redirect_to :back
     end
-  end
-
-  # PATCH/PUT /messages/1
-  def update
-    if @message.update(message_params)
-      redirect_to @message, notice: 'Message was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /messages/1
-  def destroy
-    @message.destroy
-    redirect_to messages_url, notice: 'Message was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def message_params
-      params.require(:message).permit(:teacher_id, :student_id, :message)
+      params.require(:message).permit(:sent_user_id, :received_user_id, :message)
     end
 end

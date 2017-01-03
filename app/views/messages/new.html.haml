@@ -1,5 +1,31 @@
-%h1 New student
+- provide(:title, 'メッセージ')
 
-= render 'form'
+-# Left panel
+.col-sm-4
+  %ul
+    - @all_senders.each do |sender|
+      %li= link_to sender.name, new_message_path(with: sender.id)
 
-= link_to 'Back', students_path
+-# Right panel
+.col-sm-8
+  %h3= @sender.name
+  %hr
+
+  - @messages.each do |message|
+    %span.pull-right= message.created_at
+
+    - if message.sent_user_id == current_user.id
+      %h4= current_user.name
+    - else
+      %h4= message.sent_user_id
+
+    %p= message.message
+
+  = form_for Message.new do |f|
+    .field
+      = f.text_area :message, class: 'form-control', placeholder: '返信を書く...'
+
+    = f.hidden_field_tag 'message[sent_user_id]', current_user.id
+    = f.hidden_field_tag 'message[received_user_id]', @sender.id
+    .actions
+      = f.submit 'Send', class: 'btn btn-success'
