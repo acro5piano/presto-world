@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229225831) do
+ActiveRecord::Schema.define(version: 20170104124339) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "sent_user_id"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 20161229225831) do
     t.integer  "star"
     t.string   "title"
     t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

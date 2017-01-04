@@ -14,6 +14,10 @@ class User < ApplicationRecord
   #validates_inclusion_of :, :in => 10..80
 
   enumerize :sex, in: {male: 1, female: 2}, predicates: true, scope: true
+  enumerize :shift_id, in: {
+              monday_evening: 1, monday_night: 2,
+            },
+            predicates: true, scope: true
 
   def messages
     Message.where(sent_user_id: self.id)

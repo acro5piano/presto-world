@@ -4,6 +4,9 @@ ja:
       sex:
         male: "男性"
         female: "女性"
+      shift_id:
+        monday_evening: 月曜 / 夕方
+        monday_night: 月曜 / 夜
 
   view:
     add: "追加"
