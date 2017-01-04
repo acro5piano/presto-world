@@ -17,4 +17,10 @@ class StaticPagesController < ApplicationController
 
   def dashboard
   end
+
+  def company
+  end
+
+  def user_terms
+  end
 end

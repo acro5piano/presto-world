@@ -20,7 +20,7 @@ ja:
 
   activerecord:
     models:
-      career: 登録者
+      user: ユーザー
     attributes:
       user:
         name: 名前
@@ -30,6 +30,7 @@ ja:
         educational_background: 最終学歴
         vision: なりたい教師像
         strength: 得意領域
+        shift_id: 勤務可能時間帯
 
     errors:
       template:

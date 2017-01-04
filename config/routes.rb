@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # Landing page
   root 'static_pages#index'
   get '/about', to: 'static_pages#about', as: 'about'
+  get '/company', to: 'static_pages#company', as: 'company'
+  get '/user_terms', to: 'static_pages#user_terms', as: 'user_terms'
 
   get '/register', to: 'users#new', as: 'register'
   get '/register_with_facebook', to: 'users#register_with_facebook'

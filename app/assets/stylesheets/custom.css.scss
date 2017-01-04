@@ -21,11 +21,17 @@ body {
 /* template */
 
 .navbar-footer {
-  margin-top: 50px;
+  margin-top: 30px;
   padding-top: 20px;
-  color: #AAA;
   a {
-    color: #FFF;
+    color: #777;
+  }
+  ul {
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    padding: 10px 10px 0 0;
   }
 }
 
