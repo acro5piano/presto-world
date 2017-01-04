@@ -1,11 +1,7 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
+= form_for(@user, html: { multipart: true }) do |f|
+  = render('shared/error_messages', object: f.object)
 
   %h3 サービスタイプ
   .field.form-group
@@ -20,9 +16,18 @@
   .field.form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
-  .field
-    = f.label :age
-    = f.number_field :age, class: 'form-control'
+  .field.form-group
+    = f.label :birth_day
+    = f.date_field :birth_day, class: 'form-control'
+
+  .container
+    .pull-left
+      = image_tag avator_url(@user)
+
+    .field.form-group
+      = f.label :image
+      = f.file_field :image
+
 
   %h3 教師情報
   .field

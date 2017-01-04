@@ -6,7 +6,8 @@ $(document).on('ready', function() {
     FB.init({
       appId      : appId,
       xfbml      : true,
-      version    : 'v2.8'
+      version    : 'v2.8',
+      status     : true,    // avoid "popup blocked"
     });
   };
 

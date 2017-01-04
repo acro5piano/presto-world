@@ -25,4 +25,7 @@
 /public/assets/*
 !/public/assets/.keep
 
+/public/uploads/*
+/public/uploads/.keep
+
 .env
