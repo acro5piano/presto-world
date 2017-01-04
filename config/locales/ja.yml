@@ -27,6 +27,7 @@ ja:
         birth_day: 誕生日
         gender: 性別
         email: メールアドレス
+        image: プロフィール写真
         educational_background: 最終学歴
         vision: なりたい教師像
         strength: 得意領域

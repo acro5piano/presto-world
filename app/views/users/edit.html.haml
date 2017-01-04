@@ -3,16 +3,6 @@
 = form_for(@user, html: { multipart: true }) do |f|
   = render('shared/error_messages', object: f.object)
 
-  %h3 サービスタイプ
-  .field.form-group
-    = f.radio_button :is_teacher, 1, checked: @user.is_teacher
-    = f.label :is_teacher, '教師', for: 'user_is_teacher_1'
-
-  .field.form-group
-    = f.radio_button :is_teacher, 0, checked: !@user.is_teacher
-    = f.label :is_teacher, '家庭', for: 'user_is_teacher_0'
-
-  %h3 基本情報
   .field.form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
@@ -20,27 +10,43 @@
     = f.label :birth_day
     = f.date_field :birth_day, class: 'form-control'
 
+  = f.label :image
   .container
     .pull-left
       = image_tag avator_url(@user)
 
     .field.form-group
-      = f.label :image
       = f.file_field :image
 
+  %h3 サービスタイプ
+  .field.form-group
+    = f.radio_button :is_teacher, 0, checked: !@user.is_teacher
+    = f.label :is_teacher, '家庭', for: 'user_is_teacher_0'
 
-  %h3 教師情報
-  .field
-    = f.label :educational_background
-    = f.text_field :educational_background, class: 'form-control'
-  .field
-    = f.label :vision
-    = f.text_area :vision, class: 'form-control'
-  .field
-    = f.label :strength
-    = f.text_field :strength, class: 'form-control'
-  .field
-    = f.label :shift_id
-    = f.number_field :shift_id, class: 'form-control'
+  .field.form-group
+    = f.radio_button :is_teacher, 1, checked: @user.is_teacher
+    = f.label :is_teacher, '教師', for: 'user_is_teacher_1'
+
+
+  - if @user.is_teacher
+    - edit_teacher_area_class_name = ''
+  - else
+    - edit_teacher_area_class_name = 'hided'
+
+  #edit-teacher-area(class="#{edit_teacher_area_class_name}")
+    %h3 教師情報
+    .field.form-group
+      = f.label :educational_background
+      = f.text_field :educational_background, class: 'form-control'
+    .field.form-group
+      = f.label :vision
+      = f.text_area :vision, class: 'form-control'
+    .field.form-group
+      = f.label :strength
+      = f.text_field :strength, class: 'form-control'
+    .field.form-group
+      = f.label :shift_id
+      = f.number_field :shift_id, class: 'form-control'
+
   .actions
     = f.submit '保存', class: 'btn btn-primary'
