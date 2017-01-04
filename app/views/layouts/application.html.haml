@@ -10,13 +10,14 @@
     = render 'layouts/header'
 
     - flash.each do |message_type, message|
-      = content_tag(:div, message,
-                    class: "flash text-center alert alert-#{message_type}")
+      .alert.flash.text-center(class="alert-#{message_type}")
+        = message
+        %button.close(type="button" data-dismiss="alert" aria-label="Close")
+          %span(aria-hidden="true") &times;
 
     -# for Landing page
     - if request.path == '/'
       = yield
-
     - else
       .container.wrapper
         - if yield(:title) != ''
@@ -28,6 +29,7 @@
 
   =# render 'layouts/modal'
 
+  -# Environment variables to pass for JavaScript
   :javascript
     $.variables = []
     $.variables.facebook_app_id = "#{ENV['FACEBOOK_APP_ID']}"

@@ -30,14 +30,14 @@ class UsersController < ApplicationController
 
     facebook_user_info = {
       name: fb_data[:name],
-      gender: (fb_data[:gender] == 'female'),
+      sex: (fb_data[:gender] == 'male') ? 1 : 2,
       email: fb_data[:email],
       uid: fb_data[:id],
       provider: 'facebook',
       token: params[:token],
     }
     user = User.new(facebook_user_info)
-    if user.save!
+    if user.save
       flash[:success] = '登録が完了しました'
       session[:user_id] = user.id
       redirect_to edit_user_path(user)
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save!
+    if @user.save
       flash[:success] = '登録が完了しました'
       redirect_to @user
     else
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :gender, :email, :birth_day,
+      params.require(:user).permit(:name, :sex, :email, :birth_day,
                                    :is_teacher, :educational_background,
                                    :vision, :strength, :shift_id, :image)
     end

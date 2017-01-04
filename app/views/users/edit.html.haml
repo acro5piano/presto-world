@@ -10,6 +10,13 @@
     = f.label :birth_day
     = f.date_field :birth_day, class: 'form-control'
 
+  .field.form-group
+    = f.radio_button :sex, 1, checked: @user.male?
+    = f.label :sex, '男性', for: 'user_sex_1'
+  .field.form-group
+    = f.radio_button :sex, 2, checked: @user.female?
+    = f.label :sex, '女性', for: 'user_sex_2'
+
   = f.label :image
   .container
     .pull-left

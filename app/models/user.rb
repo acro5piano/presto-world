@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  extend Enumerize
+
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sent_user_id'
   has_many :received_messages, class_name: 'Message', foreign_key: 'received_user_id'
   mount_uploader :image, ImageUploader
@@ -10,6 +12,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   #validates_inclusion_of :, :in => 10..80
+
+  enumerize :sex, in: {male: 1, female: 2}, predicates: true, scope: true
 
   def messages
     Message.where(sent_user_id: self.id)

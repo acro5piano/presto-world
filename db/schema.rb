@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20161229225831) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                   null: false
-    t.boolean  "gender",                 default: false, null: false
+    t.integer  "sex",                    default: 0,     null: false
     t.string   "email",                                  null: false
     t.date     "birth_day"
     t.string   "image"

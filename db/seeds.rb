@@ -11,7 +11,7 @@ User.create(
   [
     {
       name: '五所 和哉',
-      gender: false,
+      sex: 1,
       email: 'example_1@gmail.com',
       birth_day: '1993-02-11',
 
@@ -24,7 +24,7 @@ User.create(
     },
     {
       name: 'Hiroki Nozawa',
-      gender: false,
+      sex: 1,
       email: 'example_2@gmail.com',
       birth_day: '1992-06-06',
 
