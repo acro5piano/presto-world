@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170104124339) do
     t.integer  "sex",                    default: 0,     null: false
     t.string   "email",                                  null: false
     t.date     "birth_day"
-    t.string   "image"
+    t.string   "avatar"
     t.boolean  "is_teacher",             default: false, null: false
     t.string   "educational_background"
     t.text     "vision"

@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = 'プロフィールが更新されました'
       redirect_to @user
     else
@@ -95,6 +95,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :sex, :email, :birth_day,
                                    :is_teacher, :educational_background,
-                                   :vision, :strength, :shift_id, :image)
+                                   :vision, :strength, :shift_id, :avatar)
     end
 end

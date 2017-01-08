@@ -1,29 +1,11 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for(@user, html: { multipart: true }) do |f|
+= form_for(@user) do |f|
   = render('shared/error_messages', object: f.object)
 
   .field.form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
-  .field.form-group
-    = f.label :birth_day
-    = f.date_field :birth_day, class: 'form-control'
-
-  .field.form-group
-    = f.radio_button :sex, 1, checked: @user.male?
-    = f.label :sex, '男性', for: 'user_sex_1'
-  .field.form-group
-    = f.radio_button :sex, 2, checked: @user.female?
-    = f.label :sex, '女性', for: 'user_sex_2'
-
-  = f.label :image
-  .container
-    .pull-left
-      = image_tag avator_url(@user)
-
-    .field.form-group
-      = f.file_field :image
 
   %h3 サービスタイプ
   .field.form-group
@@ -42,6 +24,22 @@
 
   #edit-teacher-area(class="#{edit_teacher_area_class_name}")
     %h3 教師情報
+
+    = f.label :avatar
+    .container
+      .pull-left
+        = avatar_tag avator_url(@user)
+      .field.form-group
+        = f.file_field :avatar
+    .field.form-group
+      = f.radio_button :sex, 1, checked: @user.male?
+      = f.label :sex, '男性', for: 'user_sex_1'
+    .field.form-group
+      = f.radio_button :sex, 2, checked: @user.female?
+      = f.label :sex, '女性', for: 'user_sex_2'
+    .field.form-group
+      = f.label :birth_day
+      = f.date_field :birth_day, class: 'form-control'
     .field.form-group
       = f.label :educational_background
       = f.text_field :educational_background, class: 'form-control'
@@ -51,7 +49,6 @@
     .field.form-group
       = f.label :strength
       = f.text_field :strength, class: 'form-control'
-
     .field.form-group
       = f.label :shift_id
       = f.number_field :shift_id, class: 'form-control'

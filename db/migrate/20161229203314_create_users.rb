@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :sex, default: 0, null: false
       t.string :email, null: false
       t.date :birth_day
-      t.string :image
+      t.string :avatar
 
       # Teacher or student
       t.boolean :is_teacher, default: false, null: false
