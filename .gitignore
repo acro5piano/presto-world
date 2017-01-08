@@ -29,3 +29,4 @@
 /public/uploads/.keep
 
 .env
+/public/system

@@ -3,7 +3,6 @@ class User < ApplicationRecord
 
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sent_user_id'
   has_many :received_messages, class_name: 'Message', foreign_key: 'received_user_id'
-  mount_uploader :avatar, AvatarUploader
 
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -18,6 +17,11 @@ class User < ApplicationRecord
               monday_evening: 1, monday_night: 2,
             },
             predicates: true, scope: true
+
+  has_attached_file :avatar,
+                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    default_url: :default_avatar_url
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def messages
     Message.where(sent_user_id: self.id)
@@ -41,6 +45,23 @@ class User < ApplicationRecord
            end
     now.year - birth_day.year - leap
   end
+
+  def avator_url(size)
+    if avatar?
+      avatar.url(size)
+    else
+      default_avatar_url
+    end
+  end
+
+  def default_avatar_url
+    if male?
+      'boy.jpg'
+    else
+      'girl.jpg'
+    end
+  end
+
 
   private
 

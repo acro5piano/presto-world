@@ -50,7 +50,7 @@ gem 'active_hash'
 gem 'enumerize'
 gem 'email_validator'
 gem 'ransack'
-gem 'carrierwave'
+gem 'paperclip'
 gem 'rmagick'
 
 # Views

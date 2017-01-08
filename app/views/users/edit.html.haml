@@ -1,6 +1,6 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for(@user) do |f|
+= form_for @user, html: { multipart: true } do |f|
   = render('shared/error_messages', object: f.object)
 
   .field.form-group
@@ -28,7 +28,7 @@
     = f.label :avatar
     .container
       .pull-left
-        = avatar_tag avator_url(@user)
+        = image_tag @user.avator_url(:thumb)
       .field.form-group
         = f.file_field :avatar
     .field.form-group

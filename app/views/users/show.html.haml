@@ -1,6 +1,6 @@
 - provide(:title, @user.name)
 
-= image_tag avator_url(@user)
+= image_tag @user.avator_url(:thumb)
 
 %p
   %b 名前:
