@@ -49,9 +49,47 @@
     .field.form-group
       = f.label :strength
       = f.text_field :strength, class: 'form-control'
+
+    %h3 勤務可能時間帯
     .field.form-group
-      = f.label :shift_id
-      = f.number_field :shift_id, class: 'form-control'
+      %table.table.table-bordered
+        %thead
+          %th 時間帯
+          %th 月曜日
+          %th 火曜日
+          %th 水曜日
+          %th 木曜日
+          %th 金曜日
+          %th 土曜日
+          %th 日曜日
+        %tbody
+          %tr
+            %td 午後（13:00~16:00）
+            %td= f.check_box :shift_monday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_tuesday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_wednesday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_thursday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_friday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_saturday_afternoon, class: 'form-control'
+            %td= f.check_box :shift_sunday_afternoon, class: 'form-control'
+          %tr
+            %td 夕方（16:00~19:00）
+            %td= f.check_box :shift_monday_evening, class: 'form-control'
+            %td= f.check_box :shift_tuesday_evening, class: 'form-control'
+            %td= f.check_box :shift_wednesday_evening, class: 'form-control'
+            %td= f.check_box :shift_thursday_evening, class: 'form-control'
+            %td= f.check_box :shift_friday_evening, class: 'form-control'
+            %td= f.check_box :shift_saturday_evening, class: 'form-control'
+            %td= f.check_box :shift_sunday_evening, class: 'form-control'
+          %tr
+            %td 夜間（19:00~21:00）
+            %td= f.check_box :shift_monday_night, class: 'form-control'
+            %td= f.check_box :shift_tuesday_night, class: 'form-control'
+            %td= f.check_box :shift_wednesday_night, class: 'form-control'
+            %td= f.check_box :shift_thursday_night, class: 'form-control'
+            %td= f.check_box :shift_friday_night, class: 'form-control'
+            %td= f.check_box :shift_saturday_night, class: 'form-control'
+            %td= f.check_box :shift_sunday_night, class: 'form-control'
 
   .actions
     = f.submit '保存', class: 'btn btn-primary'

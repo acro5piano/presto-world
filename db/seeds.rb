@@ -20,7 +20,7 @@ User.create(
       educational_background: '一橋大学経済学部',
       vision: '生徒目線',
       strength: '世界史',
-      shift_id: 1,
+      shift_monday_afternoon: 1,
     },
     {
       name: 'Hiroki Nozawa',
@@ -30,7 +30,7 @@ User.create(
 
       is_teacher: true,
 
-      shift_id: 1,
+      shift_monday_evening: 1,
     },
   ]
 )

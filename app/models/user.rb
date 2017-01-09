@@ -23,6 +23,10 @@ class User < ApplicationRecord
                     default_url: :default_avatar_url
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+  has_many :shifts
+  accepts_nested_attributes_for :shifts
+
+
   def messages
     Message.where(sent_user_id: self.id)
       .or(Message.where(received_user_id: self.id))
@@ -62,6 +66,12 @@ class User < ApplicationRecord
     end
   end
 
+  def self.shift_times
+    %w(monday tuesday wednesday thursday friday saturday sunday)
+      .product(%w(afternoon evening night))
+      .collect { |set| set.join('_') }
+      .map { |s| ('shift_' + s).to_sym }
+  end
 
   private
 
