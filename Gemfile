@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,8 +27,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3'
-
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
@@ -63,8 +59,9 @@ gem 'nested_form'
 group :production do
   # ログ保存先変更、静的アセット Heroku 向けに調整
   gem 'rails_12factor'
-  gem 'pg'
 end
+
+gem 'pg'
 
 # Others
 gem 'dotenv-rails'

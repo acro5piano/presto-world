@@ -7,8 +7,10 @@ services:
     links:
       - db
     volumes:
-      - .:/app
-    command: tail -f /dev/null
+      - ./:/app
+    environment:
+      BUNDLE_PATH: vendor/bundle
+    command: bundle exec bin/rails s --bind 0.0.0.0 --port 3000
 
   db:
     build: ./docker/db

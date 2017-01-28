@@ -16,7 +16,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li
-            = link_to 'プロフィール編集', edit_user_path(current_user)
+            = link_to 'プロフィール編集', profile_path
           %li
             = link_to 'ログアウト', logout_path, class: 'fb-logout'
         - else

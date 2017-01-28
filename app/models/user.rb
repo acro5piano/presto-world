@@ -14,7 +14,27 @@ class User < ApplicationRecord
 
   enumerize :sex, in: {male: 1, female: 2}, predicates: true, scope: true
   enumerize :shift_id, in: {
-              monday_evening: 1, monday_night: 2,
+              shift_monday_afternoon: 1,
+              shift_tuesday_afternoon: 2,
+              shift_wednesday_afternoon: 3,
+              shift_thursday_afternoon: 4,
+              shift_friday_afternoon: 5,
+              shift_saturday_afternoon: 6,
+              shift_sunday_afternoon: 7,
+              shift_monday_evening: 8,
+              shift_tuesday_evening: 9,
+              shift_wednesday_evening: 10,
+              shift_thursday_evening: 11,
+              shift_friday_evening: 12,
+              shift_saturday_evening: 13,
+              shift_sunday_evening: 14,
+              shift_monday_night: 15,
+              shift_tuesday_night: 16,
+              shift_wednesday_night: 17,
+              shift_thursday_night: 18,
+              shift_friday_night: 19,
+              shift_saturday_night: 20,
+              shift_sunday_night: 21,
             },
             predicates: true, scope: true
 
@@ -25,6 +45,8 @@ class User < ApplicationRecord
 
   has_many :shifts
   accepts_nested_attributes_for :shifts
+
+
 
 
   def messages
@@ -71,6 +93,18 @@ class User < ApplicationRecord
       .product(%w(afternoon evening night))
       .collect { |set| set.join('_') }
       .map { |s| ('shift_' + s).to_sym }
+  end
+
+  def self.afternoon_shifts
+    self.shift_id.values[0..6].map(&:to_sym)
+  end
+
+  def self.evening_shifts
+    self.shift_id.values[7..13].map(&:to_sym)
+  end
+
+  def self.night_shifts
+    self.shift_id.values[14..20].map(&:to_sym)
   end
 
   private

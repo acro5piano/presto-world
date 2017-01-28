@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/company', to: 'static_pages#company', as: 'company'
   get '/user_terms', to: 'static_pages#user_terms', as: 'user_terms'
 
+  get '/profile', to: 'users#edit'
+
   get '/register', to: 'users#new', as: 'register'
   get '/register_with_facebook', to: 'users#register_with_facebook'
   get '/login', to: 'sessions#new', as: 'login'

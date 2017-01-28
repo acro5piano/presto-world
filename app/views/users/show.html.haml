@@ -23,7 +23,7 @@
 
 - if current_user
   - if current_user.id == @user.id
-    = link_to 'プロフィールを編集する', edit_user_path(current_user),
+    = link_to 'プロフィールを編集する', profile_path,
       class: 'btn btn-primary'
   - else
     = link_to '検討中リスト追加', '#', class: 'btn btn-default'

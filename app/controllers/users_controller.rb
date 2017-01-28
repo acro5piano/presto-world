@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :check_user, only: [:update]
 
   # GET /users
   def index
@@ -54,6 +55,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = current_user
   end
 
   # POST /users
@@ -99,4 +101,9 @@ class UsersController < ApplicationController
                                    User.shift_times)
     end
 
+    # user can edit its profile
+    def check_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user == @user
+    end
 end
