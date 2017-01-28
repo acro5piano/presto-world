@@ -19,3 +19,5 @@ services:
       - ./:/app
     ports:
       - "4000:4000"
+    links:
+      - web
