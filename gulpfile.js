@@ -26,4 +26,4 @@ gulp.task('watch', function() {
   gulp.watch("./app/**/*").on('change', browserSync.reload)
 })
 
-gulp.task('default', ['watch', 'serve'])
+gulp.task('default', ['watch'])

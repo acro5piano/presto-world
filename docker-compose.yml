@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build: ./docker/web
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    volumes:
+      - .:/app
+    command: tail -f /dev/null
+
+  db:
+    build: ./docker/db
+
+  nodejs:
+    build: ./docker/nodejs
+    volumes:
+      - ./:/app
+    ports:
+      - "4000:4000"
