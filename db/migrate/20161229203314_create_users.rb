@@ -21,29 +21,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :provider
       t.string :token
 
-      # Shift
-      t.boolean :shift_monday_afternoon
-      t.boolean :shift_monday_evening
-      t.boolean :shift_monday_night
-      t.boolean :shift_tuesday_afternoon
-      t.boolean :shift_tuesday_evening
-      t.boolean :shift_tuesday_night
-      t.boolean :shift_wednesday_afternoon
-      t.boolean :shift_wednesday_evening
-      t.boolean :shift_wednesday_night
-      t.boolean :shift_thursday_afternoon
-      t.boolean :shift_thursday_evening
-      t.boolean :shift_thursday_night
-      t.boolean :shift_friday_afternoon
-      t.boolean :shift_friday_evening
-      t.boolean :shift_friday_night
-      t.boolean :shift_saturday_afternoon
-      t.boolean :shift_saturday_evening
-      t.boolean :shift_saturday_night
-      t.boolean :shift_sunday_afternoon
-      t.boolean :shift_sunday_evening
-      t.boolean :shift_sunday_night
-
       t.timestamps
     end
   end

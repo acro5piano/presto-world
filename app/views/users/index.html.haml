@@ -8,19 +8,29 @@
 
     .form-group
       何歳から
-      = f.search_field :birth_day_to_age_gteq, class: 'form-control'
+      = f.number_field :birth_day_to_age_gteq, class: 'form-control'
     .form-group
       何歳まで
-      = f.search_field :birth_day_to_age_lteq, class: 'form-control'
+      = f.number_field :birth_day_to_age_lteq, class: 'form-control'
 
-    .col-sm-offset-2
-      = f.submit class: 'btn btn-success'
+    .form-group
+      シフト
+      = select_tag :users_shift_id,
+        options_for_select(Shift.pluck(:name, :id), selected: @users_shift_ids),
+        multiple: true, include_blank: '', class: 'form-control'
+
+    .form-group
+      キーワード
+      = f.search_field :name_or_educational_background_or_strength_or_vision_cont,
+        class: 'form-control'
+
+    = f.submit class: 'btn btn-success'
 
 %p &nbsp;
 
-= will_paginate @users, params: { q: @q }
 
 .col-sm-9
+  = will_paginate @users, params: { q: @q }
   - if @users
     - @users.each do |user|
       .panel.panel-info
@@ -28,7 +38,7 @@
           = user.educational_background
         .panel-body
           %h3
-            = link_to user.name, user_path(user)
+            = link_to user.name, user_path(user), target: '_blank'
             &nbsp;
             %small
               = user.age
@@ -40,5 +50,4 @@
 
   - else
     %p 対象のユーザーは見つかりませんでした
-
-= will_paginate @users, params: { q: @q }
+  = will_paginate @users, params: { q: @q }

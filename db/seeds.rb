@@ -19,9 +19,6 @@ end
       strength: Faker::StarWars.quote,
       is_teacher: true,
     })
-  User.shift_id.values.map(&:to_sym).each do |s|
-    teacher_attributes[s] = rand(0..1)
-  end
 
   User.create(teacher_attributes)
 end

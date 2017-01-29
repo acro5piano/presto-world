@@ -40,9 +40,11 @@ group :development, :test do
 end
 
 # Models
+gem 'pg'
 gem 'will_paginate', '3.1.0'
+gem 'nested_form'
 gem 'bootstrap-will_paginate'
-gem 'active_hash'
+gem 'seed-fu'
 gem 'enumerize'
 gem 'email_validator'
 gem 'ransack'
@@ -61,7 +63,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'pg'
 
 # Others
 gem 'dotenv-rails'

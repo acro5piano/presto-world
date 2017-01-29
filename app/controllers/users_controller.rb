@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :check_user, only: [:update]
+  before_action :check_user, only: [:edit, :update]
 
   # GET /users
   def index
-    @q = User.where(is_teacher: true).search(get_query('query_user'))
-    @users = @q.result.paginate(page: params[:page],
-                                per_page: 10)
+    query = params[:q]
+
+    @users_shift_ids = params[:users_shift_id]
+    if @users_shift_ids && @users_shift_ids != ['']
+      query['users_shifts_shift_id_in'] = @users_shift_ids.map(&:to_i)
+    end
+
+    @q = User.where(is_teacher: true).search(query)
+    @q.build_grouping unless @q.groupings.any?
+    @users = @q.result(distinct: true)
+               .paginate(page: params[:page], per_page: 10)
   end
 
   # GET /users/1
@@ -55,7 +63,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /profile
   def edit
     @user = current_user
   end
@@ -76,7 +84,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = 'プロフィールが更新されました'
-      redirect_to @user
+      redirect_to profile_path
     else
       render :edit
     end
@@ -97,15 +105,19 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :sex, :email, :birth_day,
-                                   :is_teacher, :educational_background,
-                                   :vision, :strength, :avatar,
-                                   User.shift_times)
+      params.require(:user).permit(
+        :name, :sex, :email, :birth_day,
+        :is_teacher, :educational_background,
+        :vision, :strength, :avatar,
+        users_shifts_attributes: [:id, :user_id, :shift_id, :_destroy]
+      )
     end
 
     # user can edit its profile
     def check_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user == @user
+      if params[:id]
+        @user = User.find(params[:id])
+        redirect_to(root_url) unless current_user == @user
+      end
     end
 end

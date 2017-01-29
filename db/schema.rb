@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108222736) do
+ActiveRecord::Schema.define(version: 20170129150941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,46 +33,38 @@ ActiveRecord::Schema.define(version: 20170108222736) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shifts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "name",                                      null: false
-    t.integer  "sex",                       default: 0,     null: false
-    t.string   "email",                                     null: false
+    t.string   "name",                                   null: false
+    t.integer  "sex",                    default: 0,     null: false
+    t.string   "email",                                  null: false
     t.date     "birth_day"
     t.string   "avatar"
-    t.boolean  "is_teacher",                default: false, null: false
+    t.boolean  "is_teacher",             default: false, null: false
     t.string   "educational_background"
     t.text     "vision"
     t.string   "strength"
     t.string   "uid"
     t.string   "provider"
     t.string   "token"
-    t.boolean  "shift_monday_afternoon"
-    t.boolean  "shift_monday_evening"
-    t.boolean  "shift_monday_night"
-    t.boolean  "shift_tuesday_afternoon"
-    t.boolean  "shift_tuesday_evening"
-    t.boolean  "shift_tuesday_night"
-    t.boolean  "shift_wednesday_afternoon"
-    t.boolean  "shift_wednesday_evening"
-    t.boolean  "shift_wednesday_night"
-    t.boolean  "shift_thursday_afternoon"
-    t.boolean  "shift_thursday_evening"
-    t.boolean  "shift_thursday_night"
-    t.boolean  "shift_friday_afternoon"
-    t.boolean  "shift_friday_evening"
-    t.boolean  "shift_friday_night"
-    t.boolean  "shift_saturday_afternoon"
-    t.boolean  "shift_saturday_evening"
-    t.boolean  "shift_saturday_night"
-    t.boolean  "shift_sunday_afternoon"
-    t.boolean  "shift_sunday_evening"
-    t.boolean  "shift_sunday_night"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "users_shifts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shift_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

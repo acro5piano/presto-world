@@ -19,7 +19,7 @@
   = @user.strength
 %p
   %b 勤務可能時間帯:
-  = @user.shift_id
+  = @user.shifts
 
 - if current_user
   - if current_user.id == @user.id

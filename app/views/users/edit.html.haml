@@ -1,20 +1,37 @@
 - provide(:title, 'プロフィールの編集')
 
-= form_for @user, html: { multipart: true } do |f|
+= nested_form_for @user, html: { multipart: true , class: 'form-horizontal'}  do |f|
   = render('shared/error_messages', object: f.object)
 
-  .field.form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+  .panel.panel-default
+    .panel-heading
+      基本情報
+    .panel-body
+      .form-group
+        .col-sm-4
+          = f.label :name
+        .col-sm-8
+          = f.text_field :name, class: 'form-control'
 
-  %h3 サービスタイプ
-  .field.form-group
-    = f.radio_button :is_teacher, 0, checked: !@user.is_teacher
-    = f.label :is_teacher, '家庭', for: 'user_is_teacher_0'
+      .form-group
+        .col-sm-4
+          %b サービスタイプ
+        .col-sm-8
+          .radio-inline
+            = f.radio_button :is_teacher, 0, checked: !@user.is_teacher
+            = f.label :is_teacher, '家庭', for: 'user_is_teacher_0'
 
-  .field.form-group
-    = f.radio_button :is_teacher, 1, checked: @user.is_teacher
-    = f.label :is_teacher, '教師', for: 'user_is_teacher_1'
+          .radio-inline
+            = f.radio_button :is_teacher, 1, checked: @user.is_teacher
+            = f.label :is_teacher, '教師', for: 'user_is_teacher_1'
+
+      .form-group
+        .col-sm-4
+          = f.label :avatar
+        .col-sm-8
+          .pull-left
+            = image_tag @user.avator_url(:thumb)
+          = f.file_field :avatar
 
 
   - if @user.is_teacher
@@ -22,68 +39,57 @@
   - else
     - edit_teacher_area_class_name = 'hided'
 
-  #edit-teacher-area(class="#{edit_teacher_area_class_name}")
-    %h3 教師情報
+  #edit-teacher-area.panel.panel-default(class="#{edit_teacher_area_class_name}")
+    .panel-heading
+      教師情報
+    .panel-body
+      .form-group
+        .col-sm-4
+          %b 性別
+        .col-sm-8
+          .radio-inline
+            = f.radio_button :sex, 1, checked: @user.male?
+            = f.label :sex, '男性', for: 'user_sex_1'
+          .radio-inline
+            = f.radio_button :sex, 2, checked: @user.female?
+            = f.label :sex, '女性', for: 'user_sex_2'
+      .form-group
+        .col-sm-4
+          = f.label :birth_day
+        .col-sm-8
+          = f.date_field :birth_day, class: 'form-control'
+      .form-group
+        .col-sm-4
+          = f.label :educational_background
+        .col-sm-8
+          = f.text_field :educational_background, class: 'form-control'
+      .form-group
+        .col-sm-4
+          = f.label :vision
+        .col-sm-8
+          = f.text_area :vision, class: 'form-control'
+      .form-group
+        .col-sm-4
+          = f.label :strength
+        .col-sm-8
+          = f.text_field :strength, class: 'form-control'
 
-    = f.label :avatar
-    .container
-      .pull-left
-        = image_tag @user.avator_url(:thumb)
-      .field.form-group
-        = f.file_field :avatar
-    .field.form-group
-      = f.radio_button :sex, 1, checked: @user.male?
-      = f.label :sex, '男性', for: 'user_sex_1'
-    .field.form-group
-      = f.radio_button :sex, 2, checked: @user.female?
-      = f.label :sex, '女性', for: 'user_sex_2'
-    .field.form-group
-      = f.label :birth_day
-      = f.date_field :birth_day, class: 'form-control'
-    .field.form-group
-      = f.label :educational_background
-      = f.text_field :educational_background, class: 'form-control'
-    .field.form-group
-      = f.label :vision
-      = f.text_area :vision, class: 'form-control'
-    .field.form-group
-      = f.label :strength
-      = f.text_field :strength, class: 'form-control'
+  .panel.panel-default
+    .panel-heading
+      勤務可能時間帯
+    .panel-body
+      = f.fields_for :users_shifts do |shifts_form|
+        .form-group
+          .col-sm-4
+            = shifts_form.collection_select :shift_id, Shift.all, :id, :name,
+              {}, {class: 'form-control col-sm-2'}
+          .col-sm-2
+            = shifts_form.link_to_remove "削除",
+              class: 'btn btn-danger form-control'
 
-    %h3 勤務可能時間帯
-    .field.form-group.table-responsive
-      %table.table.table-bordered
-        %thead
-          %th 時間帯
-          %th 月曜日
-          %th 火曜日
-          %th 水曜日
-          %th 木曜日
-          %th 金曜日
-          %th 土曜日
-          %th 日曜日
-        %tbody
-          %tr
-            %td
-              午後
-              %br
-              13:00~16:00
-            - User.afternoon_shifts.each do |s|
-              %td= f.check_box s, class: 'form-control'
-          %tr
-            %td
-              夕方
-              %br
-              16:00~19:00
-            - User.evening_shifts.each do |s|
-              %td= f.check_box s, class: 'form-control'
-          %tr
-            %td
-              夜間
-              %br
-              19:00~21:00
-            - User.night_shifts.each do |s|
-              %td= f.check_box s, class: 'form-control'
+      = f.link_to_add "シフトを追加", :users_shifts
+
+
 
   .actions
     = f.submit '保存', class: 'btn btn-primary'
