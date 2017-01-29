@@ -21,13 +21,6 @@ test:
 
 staging:
   <<: *default
-  adapter: postgresql
 
 production:
   <<: *default
-  adapter: postgresql
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  port: <%= ENV['DB_PORT'] %>
-  password: <%= ENV['DB_PASSWORD'] %>

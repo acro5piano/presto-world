@@ -33,11 +33,11 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'database_cleaner'
   gem 'rails-controller-testing'
-
-  # Test data
-  gem 'faker'
-  gem 'gimei'
 end
+
+# Test data. After service launch, they should be in :development, :test group
+gem 'faker'
+gem 'gimei'
 
 # Models
 gem 'pg'
