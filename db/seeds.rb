@@ -1,3 +1,5 @@
+require 'faker'
+
 def user_attributes_base
   {
     name: Faker::Name.name,
