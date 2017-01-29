@@ -1,25 +1,44 @@
 - provide(:title,  '教師検索結果')
 
-- if @users
-  %table.table.table-bordered
-    %thead
-      %tr
-        %th 教師名
-        %th 年齢
-        %th 学歴
-        %th なりたい教師像
-        %th 得意領域
-        %th シフト
+.col-sm-3
+  = search_form_for @q, class: 'form-horizontal' do |f|
+    .form-group
+      学歴
+      = f.search_field :educational_background_cont, class: 'form-control'
 
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td= link_to user.name, user_path(user)
-          %td= user.age
-          %td= user.educational_background
-          %td= user.vision
-          %td= user.strength
-          %td= user.shift_id
+    .form-group
+      何歳から
+      = f.search_field :birth_day_to_age_gteq, class: 'form-control'
+    .form-group
+      何歳まで
+      = f.search_field :birth_day_to_age_lteq, class: 'form-control'
 
-- else
-  %p 対象のユーザーは見つかりませんでした
+    .col-sm-offset-2
+      = f.submit class: 'btn btn-success'
+
+%p &nbsp;
+
+= will_paginate @users, params: { q: @q }
+
+.col-sm-9
+  - if @users
+    - @users.each do |user|
+      .panel.panel-info
+        .panel-heading
+          = user.educational_background
+        .panel-body
+          %h3
+            = link_to user.name, user_path(user)
+            &nbsp;
+            %small
+              = user.age
+              歳
+          %p= user.vision
+          %p= user.strength
+
+          -#TODO: シフト %p= user.shift_monday_afternoon
+
+  - else
+    %p 対象のユーザーは見つかりませんでした
+
+= will_paginate @users, params: { q: @q }

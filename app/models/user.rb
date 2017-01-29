@@ -46,9 +46,6 @@ class User < ApplicationRecord
   has_many :shifts
   accepts_nested_attributes_for :shifts
 
-
-
-
   def messages
     Message.where(sent_user_id: self.id)
       .or(Message.where(received_user_id: self.id))

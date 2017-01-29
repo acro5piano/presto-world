@@ -11,7 +11,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return nil if !session[:user_id]
+    return nil unless session[:user_id]
     User.find(session[:user_id])
+  end
+
+  def get_query(cookie_key)
+    cookies.delete(cookie_key) if params[:clear]
+    cookies[cookie_key] = params[:q].to_json if params[:q]
+    params[:q].presence || JSON.load(cookies[cookie_key])
   end
 end

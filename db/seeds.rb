@@ -1,36 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+def user_attributes_base
+  {
+    name: Faker::Name.name,
+    sex: rand(1..2),
+    email: Faker::Internet.email,
+    birth_day: Faker::Date.birthday,
+  }
+end
 
-# TODO: Fakerを使おう
-User.create(
-  [
+100.times do
+  User.create(user_attributes_base)
+end
+
+100.times do
+  teacher_attributes = user_attributes_base.merge(
     {
-      name: '五所 和哉',
-      sex: 1,
-      email: 'example_1@gmail.com',
-      birth_day: '1993-02-11',
-
-      is_teacher: false,
-
-      educational_background: '一橋大学経済学部',
-      vision: '生徒目線',
-      strength: '世界史',
-      shift_monday_afternoon: 1,
-    },
-    {
-      name: 'Hiroki Nozawa',
-      sex: 1,
-      email: 'example_2@gmail.com',
-      birth_day: '1992-06-06',
-
+      educational_background: Faker::University.name,
+      vision: Faker::Hipster.sentence,#Faker::StarWars.quote,
+      strength: Faker::StarWars.quote,
       is_teacher: true,
+    })
+  User.shift_id.values.map(&:to_sym).each do |s|
+    teacher_attributes[s] = rand(0..1)
+  end
 
-      shift_monday_evening: 1,
-    },
-  ]
-)
+  User.create(teacher_attributes)
+end
