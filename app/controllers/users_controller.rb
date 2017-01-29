@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    query = params[:q]
+    query = get_query('query_user')
 
     @users_shift_ids = params[:users_shift_id]
     if @users_shift_ids && @users_shift_ids != ['']
