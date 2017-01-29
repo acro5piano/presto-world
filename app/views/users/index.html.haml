@@ -32,6 +32,7 @@
 
 .col-sm-9
   = will_paginate @users, params: { q: @q }
+  %p= page_entries_info @users
   - if @users
     - @users.each do |user|
       .panel.panel-info

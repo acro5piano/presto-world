@@ -2,6 +2,18 @@ ja:
   will_paginate:
     previous_label: '前へ'
     next_label: '次へ'
+    page_entries_info:
+      multi_page: "%{count}件中 %{model} %{from} - %{to}件表示"
+      multi_page_html: "%{count}件中 %{from} - %{to}件表示"
+      single_page:
+        zero:  "見つかりませんでした"
+        one: "%{count}件中 1 - %{count}件表示"
+        other: "%{count}件中 1 - %{count}件表示"
+      single_page_html:
+        zero:  "見つかりませんでした"
+        one: "%{count}件中 1 - %{count}件表示"
+        other: "%{count}件中 1 - %{count}件表示"
+
   enumerize:
     user:
       sex:
@@ -26,7 +38,7 @@ ja:
 
   activerecord:
     models:
-      user: ユーザー
+      user: 家庭教師
     attributes:
       user:
         name: 名前
