@@ -4,12 +4,14 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    query = get_query('query_user')
-
+    # シフトIDはhas_manyで、そのままでは in 検索ができないため、
+    # 一旦違う値でもらってからparamsに代入している
     @users_shift_ids = params[:users_shift_id]
     if @users_shift_ids && @users_shift_ids != ['']
-      query['users_shifts_shift_id_in'] = @users_shift_ids.map(&:to_i)
+      params[:q]['users_shifts_shift_id_in'] = @users_shift_ids.map(&:to_i)
     end
+
+    query = get_query('query_user')
 
     @q = User.where(is_teacher: true).search(query)
     @q.build_grouping unless @q.groupings.any?

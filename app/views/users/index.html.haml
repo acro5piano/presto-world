@@ -15,6 +15,7 @@
 
     .form-group
       シフト
+      -# TODO: selected の @users_shift_ids がページネーション中にnilになるので、@qから取得する
       = select_tag :users_shift_id,
         options_for_select(Shift.pluck(:name, :id), selected: @users_shift_ids),
         multiple: true, include_blank: '', class: 'form-control'
