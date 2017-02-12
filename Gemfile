@@ -1,3 +1,4 @@
+# coding: utf-8
 source 'https://rubygems.org'
 
 ruby '2.3.1'
@@ -56,7 +57,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'twitter-bootstrap-rails' # Bootstrapの本体
 gem 'rails-i18n'
-gem 'nested_form'
+#gem 'nested_form'
+gem 'select2-rails'
 
 group :production do
   # ログ保存先変更、静的アセット Heroku 向けに調整

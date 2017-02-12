@@ -78,18 +78,9 @@
     .panel-heading
       勤務可能時間帯
     .panel-body
-      = f.fields_for :users_shifts do |shifts_form|
-        .form-group
-          .col-sm-4
-            = shifts_form.collection_select :shift_id, Shift.all, :id, :name,
-              {}, {class: 'form-control col-sm-2'}
-          .col-sm-2
-            = shifts_form.link_to_remove "削除",
-              class: 'btn btn-danger form-control'
-
-      = f.link_to_add "シフトを追加", :users_shifts
-
-
+      .form-group
+        = collection_select :user, :shift_ids, Shift.all, :id, :name,
+          {}, multiple: true, selected: true, class: 'select2 form-control'
 
   .actions
     = f.submit '保存', class: 'btn btn-primary'
