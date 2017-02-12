@@ -76,7 +76,8 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = '登録が完了しました'
-      redirect_to @user
+      session[:user_id] = @user.id
+      redirect_to profile_path
     else
       render :new
     end

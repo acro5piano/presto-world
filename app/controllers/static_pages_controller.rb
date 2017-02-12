@@ -1,6 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-
   def index
     if current_user
       render 'static_pages/dashboard'

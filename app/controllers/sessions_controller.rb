@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
   # メールアドレス認証が必要になってきた頃に導入する
   # 現在はFacebook認証のみを使っているので、必要ない
-  # def new
-  # end
+  def new
+    # 新規登録用
+    @user = User.new
+  end
 
   def create
     flash[:success] = 'ログインしました'

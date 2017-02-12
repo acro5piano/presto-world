@@ -21,9 +21,9 @@
             = link_to 'ログアウト', logout_path, class: 'fb-logout'
         - else
           %li
-            %a.fb-register(href='#')
+            %a(href=login_path)
               %i.glyphicon.glyphicon-user
-              Facebookで登録 / ログイン
+              新規登録 / ログイン
 
     .collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
@@ -39,6 +39,6 @@
                 = link_to 'ログアウト', logout_path, class: 'fb-logout'
         - else
           %li
-            %a.fb-register(href='#')
+            %a(href=login_path)
               %i.glyphicon.glyphicon-user
-              Facebookで登録 / ログイン
+              新規登録 / ログイン
