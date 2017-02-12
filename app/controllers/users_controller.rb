@@ -85,6 +85,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update_attributes(user_params)
+      user_params[:shift_ids].each do |shift_id, index|
+        next if shift_id == 1
+
+        UsersShift.new(user_id: @user.id,
+                       shift_id: shift_id).save!
+      end
       flash[:success] = 'プロフィールが更新されました'
       redirect_to profile_path
     else
@@ -111,7 +117,7 @@ class UsersController < ApplicationController
         :name, :sex, :email, :birth_day,
         :is_teacher, :educational_background,
         :vision, :strength, :avatar,
-        users_shifts_attributes: [:id, :user_id, :shift_id, :_destroy]
+        shift_ids: []
       )
     end
 
