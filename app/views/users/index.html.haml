@@ -6,19 +6,23 @@
       学歴
       = f.search_field :educational_background_cont, class: 'form-control'
 
-    .form-group
-      何歳から
-      = f.number_field :birth_day_to_age_gteq, class: 'form-control'
-    .form-group
-      何歳まで
-      = f.number_field :birth_day_to_age_lteq, class: 'form-control'
+    -# TODO: この辺の項目は必要なさそう
+    -#       大学とエリアで大まかに絞り込んで、あとは目視で良いのでは。
 
-    .form-group
-      シフト
-      -# TODO: selected の @users_shift_ids がページネーション中にnilになるので、@qから取得する
-      = select_tag :users_shift_id,
-        options_for_select(Shift.pluck(:name, :id), selected: @users_shift_ids),
-        multiple: true, include_blank: '', class: 'form-control'
+    -# .form-group
+    -#   何歳から
+    -#   = f.number_field :birth_day_to_age_gteq, class: 'form-control'
+    -# .form-group
+    -#   何歳まで
+    -#   = f.number_field :birth_day_to_age_lteq, class: 'form-control'
+
+    -# .form-group
+    -#   シフト
+    -#   -# TODO: selected の @users_shift_ids
+    -#   -# がページネーション中にnilになるので、@qから取得する
+    -#   = select_tag :users_shift_id,
+    -#     options_for_select(Shift.pluck(:name, :id), selected: @users_shift_ids),
+    -#     multiple: true, include_blank: '', class: 'form-control'
 
     .form-group
       キーワード
@@ -47,8 +51,6 @@
               歳
           %p= user.vision
           %p= user.strength
-
-          -#TODO: シフト %p= user.shift_monday_afternoon
 
   - else
     %p 対象のユーザーは見つかりませんでした
